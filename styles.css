@@ -1,0 +1,93 @@
+* {
+  font-family: 'Hind Siliguri', sans-serif; 
+  color: #ffffff;
+  /* border: solid 3px black; */
+
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background-color: #c76af1;
+  display: flex;
+
+}
+
+.home {
+  height: 100vh;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 7em;
+  margin-bottom: -.3em;
+}
+
+h2 {
+  font-size: 250%;
+  text-align: center;
+  width: 20em;
+  margin: 0;
+  font-weight: 300;
+}
+
+.home__selection {
+  height: 26vh;
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 2em;
+}
+
+.home__box {
+  height: 19vh;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ab49da;
+}
+
+.home__option {
+  font-size: 1.8em;
+  margin-bottom: .5em;
+}
+.home__rules {
+  font-size: 1.3em;
+  margin: 0;
+}
+
+.home__advanced {
+  height: 24vh;
+}
+
+.left, .right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 15vw;
+  background-color: #cd82f0;
+  font-size: 2.5em;
+}
+
+.left__emoji, .right__emoji {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+.left__human, .right__computer {
+  margin-top: 0;
+}

@@ -10,26 +10,46 @@
     <title>Rock, Paper, Scissors</title>
   </head>
   <body>
-    <section class="center">
-      <h1 class="center__header">Rock, Paper, Scissors</h1>
-      <h2 class="center__subheader">Choose your fighter!</h2>
-      <section class="center__classic">
-        <p>Classic</p>
-        <!-- diagram of game rules here -->
-        <!-- make clickable -->
+    <section class="left">
+      <!-- left sidebar here -->
+      <p class="left__emoji">👐</p>
+      <p class="left__human">Human</p>
+      <p class="left__wins">Wins: 0</p>
+    </section>
+    <section class="home">
+      <h1 class="home__header">Rock, Paper, Scissors</h1>
+      <h2 class="home__subheader">Choose your game!</h2>
+      <section class="home__selection">
+        <box class="home__box home__classic">
+          <p class="home__option">🪨 CLASSIC ✂️</p>
+          <p class="home__rules">rock > scissors</p>
+          <p class="home__rules">paper > rock</p>
+          <p class="home__rules">scissors > paper</p>
+        </box>
+          <!-- diagram of game rules here -->
+          <!-- make clickable -->
       </section>
-      <section class="center__advanced">
-        <!-- advanced section here -->
+      <section class="home__selection">
+        <box class="home__box home__advanced">
+          <p class="home__option">ADVANCED</p>
+          <p class="home__rules">TBD</p>
+          <p class="home__rules">TBD</p>
+          <p class="home__rules">TBD</p>
+          <p class="home__rules">TBD</p>
+          <p class="home__rules">TBD</p>
+        </box>
       </section>
     </section>
-    <section class="side">
-      <div class="side__left">
-        <!-- left sidebar here -->
-      </div>
-      <div class="side__right">
-        <!-- right sidebar here -->
-      </div>
+    <section class="right">
+      <p class="right__emoji">🖥️</p>
+      <p class="right__computer">Computer</p>
+      <p class="right__wins">Wins: 0</p>
+      <!-- right sidebar here -->
     </section>
+    <!-- <section class="side">
+     
+      
+    </section> -->
   </body>
   <script src="./main.js"></script>
 </html>
