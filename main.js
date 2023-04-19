@@ -1,13 +1,7 @@
-// function for player to select rps.
-// function for random selection for computer.
-// function for selections to go head to head
-// data model to keep track of wins for human, wins for computer, and draws
-
-// function createPlayer(selection) {
-//   if (selection === 'rock') {
-
-//   }
-// }
+var homePage = document.querySelector('.home');
+var homeSubHeader = document.querySelector('.home__subheader');
+var homeSelection = document.querySelectorAll('.home__selection');
+var homeClassicBox = document.querySelector('.home__classic');
 
 var computerWins = 0;
 var playerWins = 0;
@@ -49,3 +43,18 @@ function computerSelection() {
 }
 
 createGame('scissors', computerSelection())
+
+// create function to switch from home screen to select fighter screen
+// make classic box clickable
+  // hide home selection
+  // switch subheader to choose your fighter
+  // display rps icons
+
+function fighterPage() {
+  homeSubHeader.innerText = 'Choose your fighter!';
+  for (var i = 0; i < homeSelection.length; i++) {
+    homeSelection[i].classList.add('home--hidden');
+  }
+}
+
+homeClassicBox.addEventListener('click', fighterPage)

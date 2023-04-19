@@ -90,3 +90,9 @@ h2 {
 .left__human, .right__computer {
   margin-top: 0;
 }
+
+/* Modifiers */
+
+.home--hidden {
+  display: none;
+}
