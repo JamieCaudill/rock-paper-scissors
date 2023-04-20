@@ -98,9 +98,23 @@ h2 {
   margin-top: 0;
 }
 
+.fighter {
+  width: 80%;
+  font-size: 16em;
+  margin-top: -.5em;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+
+
+
+
 /* Modifiers */
 
-.home--hidden {
+.home--hidden, .fighter--hidden {
   display: none;
 }
 

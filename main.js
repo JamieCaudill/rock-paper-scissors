@@ -2,9 +2,19 @@ var homePage = document.querySelector('.home');
 var homeSubHeader = document.querySelector('.home__subheader');
 var homeSelection = document.querySelectorAll('.home__selection');
 var homeClassicBox = document.querySelector('.home__classic');
+var fighter = document.querySelector('.fighter');
+var rock = document.querySelector('.fighter__rock');
+var paper = document.querySelector('.fighter__paper');
+var scissors = document.querySelector('.fighter__scissors');
 
 var computerWins = 0;
 var playerWins = 0;
+
+// EVENT LISTENERS //
+
+homeClassicBox.addEventListener('click', fighterPage)
+
+// FUNCTIONS //
 
 function createGame(playerSelection, computerSelection) {
   if (playerSelection === 'rock' && computerSelection === 'paper') {
@@ -42,19 +52,27 @@ function computerSelection() {
   }
 }
 
-createGame('scissors', computerSelection())
-
-// create function to switch from home screen to select fighter screen
-// make classic box clickable
-  // hide home selection
-  // switch subheader to choose your fighter
-  // display rps icons
+// PAGES //
 
 function fighterPage() {
   homeSubHeader.innerText = 'Choose your fighter!';
   for (var i = 0; i < homeSelection.length; i++) {
     homeSelection[i].classList.add('home--hidden');
   }
+  fighter.classList.remove('fighter--hidden');
 }
 
-homeClassicBox.addEventListener('click', fighterPage)
+function createPlayer(event) {
+  if (event.target.classList.contains('fighter__rock')) {
+    return 'rock';
+  } else if (event.target.classList.contains('fighter__paper')) {
+    return 'paper';
+  } else if (event.target.classList.contains('fighter__scissors')) {
+    return 'scissors';
+  }
+}
+
+fighter.addEventListener('click', function (event) {
+  var playerSelection = createPlayer(event);
+  createGame(playerSelection, computerSelection())
+})
