@@ -18,27 +18,26 @@ homeClassicBox.addEventListener('click', fighterPage)
 
 function createGame(playerSelection, computerSelection) {
   if (playerSelection === 'rock' && computerSelection === 'paper') {
+    computerWins = computerWins + 1;
     console.log('Computer wins! Computer: ' + computerSelection)
-    return computerWins = computerWins++;
   } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+    playerWins = playerWins + 1;
     console.log('Player wins! Computer: ' + computerSelection)
-    return playerWins = playerWins++;
   } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+    computerWins = computerWins + 1;
     console.log('Computer wins! Computer: ' + computerSelection)
-    return computerWins = computerWins++;
   } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+    playerWins = playerWins + 1;
     console.log('Player wins! Computer: ' + computerSelection)
-    return playerWins = playerWins++;
   } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+    computerWins = computerWins + 1;
     console.log('Computer wins! Computer: ' + computerSelection)
-    return computerWins = computerWins++;
   } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+    playerWins = playerWins + 1;
     console.log('Player wins! Computer: ' + computerSelection)
-    return playerWins = playerWins++;
-  } else {
+  } else if (playerSelection === computerSelection) {
     console.log('Draw!')
   }
-  
 }
 
 function computerSelection() {
