@@ -6,6 +6,8 @@ var fighter = document.querySelector('.fighter');
 var rock = document.querySelector('.fighter__rock');
 var paper = document.querySelector('.fighter__paper');
 var scissors = document.querySelector('.fighter__scissors');
+var leftWins = document.querySelector('.left__wins');
+var rightWins = document.querySelector('.right__wins');
 
 var computerWins = 0;
 var playerWins = 0;
@@ -38,6 +40,8 @@ function createGame(playerSelection, computerSelection) {
   } else if (playerSelection === computerSelection) {
     console.log('Draw!')
   }
+  leftWins.innerText = 'Wins: ' + playerWins;
+  rightWins.innerText = 'Wins: ' + computerWins;
 }
 
 function computerSelection() {
