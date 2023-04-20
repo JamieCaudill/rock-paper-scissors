@@ -32,7 +32,7 @@ h1 {
   margin-bottom: -.3em;
 }
 
-h2 {
+h2, .home__winner {
   font-size: 250%;
   text-align: center;
   width: 20em;
@@ -100,18 +100,35 @@ h2 {
 
 .fighter {
   width: 80%;
+  height: 55%;
   font-size: 16em;
-  margin-top: -.5em;
+  margin-top: 0;
   display: flex;
   justify-content: space-around;
+  align-items: flex-start;
 }
 
+.fighter__fighters {
+  margin-top: .7em;
+  cursor: pointer;
+}
+.fighter__player, .fighter__computer {
+  margin: .3em 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+}
 
+.fighter__icon {
+  font-size: .3em;
+  margin: -.5em 0 0 0;
+}
 
-
-
-
+.fighter__vs {
+  font-size: .4em;
+  margin: 2em 0 0 0;
+}
 /* Modifiers */
 
 .home--hidden, .fighter--hidden {
