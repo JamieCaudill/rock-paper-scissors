@@ -8,6 +8,7 @@ var paper = document.querySelector('.fighter__paper');
 var scissors = document.querySelector('.fighter__scissors');
 var leftWins = document.querySelector('.left__wins');
 var rightWins = document.querySelector('.right__wins');
+var fighters = document.querySelectorAll('.fighter__fighters')
 
 var computerWins = 0;
 var playerWins = 0;
@@ -75,7 +76,25 @@ function createPlayer(event) {
   }
 }
 
+function showdown(playerSelection, computerSelection) {
+  if (playerSelection === 'rock' && computerSelection === 'scissors') {
+    setTimeout(function sub() {
+      paper.classList.add('fighter--hidden')
+    }, 1000)
+  }
+}
+
+function resetGame() {
+  setTimeout(function() {
+    for (var i = 0; i < fighters.length; i++) {
+      fighters[i].classList.remove('fighter--hidden');
+    }
+  }, 3000)
+}
+
 fighter.addEventListener('click', function (event) {
   var playerSelection = createPlayer(event);
   createGame(playerSelection, computerSelection())
+  showdown(playerSelection, computerSelection())
+  resetGame();
 })
