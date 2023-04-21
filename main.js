@@ -1,4 +1,3 @@
-var homePage = document.querySelector('.home');
 var homeSubHeader = document.querySelector('.home__subheader');
 var homeSelection = document.querySelectorAll('.home__selection');
 var homeClassicBox = document.querySelector('.home__classic');
@@ -10,6 +9,7 @@ var leftWins = document.querySelector('.left__wins');
 var rightWins = document.querySelector('.right__wins');
 var fighters = document.querySelectorAll('.fighter__fighters');
 var winnerMessage = document.querySelector('.home__winner');
+var homeButton = document.querySelector('.left__home');
 
 // DATA MODEL //
 
@@ -23,6 +23,7 @@ var winConditions = [['rock', 'scissors'], ['paper', 'rock'], ['scissors', 'pape
 
 homeClassicBox.addEventListener('click', fighterPage)
 fighter.addEventListener('click', displayWinner)
+homeButton.addEventListener('click', homePage)
 
 // FUNCTIONS //
 
@@ -73,6 +74,16 @@ function fighterPage() {
     homeSelection[i].classList.add('home--hidden');
   }
   fighter.classList.remove('fighter--hidden');
+  homeButton.classList.remove('left--hidden');
+}
+
+function homePage() {
+  homeSubHeader.innerText = 'Choose your game!';
+  for (var i = 0; i < homeSelection.length; i++) {
+    homeSelection[i].classList.remove('home--hidden');
+  }
+  fighter.classList.add('fighter--hidden');
+  homeButton.classList.add('left--hidden');
 }
 
 function createPlayer(event) {

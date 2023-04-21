@@ -129,9 +129,22 @@ h2, .home__winner {
   font-size: .4em;
   margin: 2em 0 0 0;
 }
+
+.left__home {
+  width: 75%;
+  background-color: #ab49da;
+  opacity: 0.8;
+  transition: .2s;
+  cursor: pointer;
+}
+
+.left__home:hover {
+  opacity: 1;
+} 
+
 /* Modifiers */
 
-.home--hidden, .fighter--hidden {
+.home--hidden, .fighter--hidden, .left--hidden {
   display: none;
 }
 
