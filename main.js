@@ -13,6 +13,9 @@ var rightWins = document.querySelector('.right__wins');
 var fighters = document.querySelectorAll('.fighter__fighters');
 var winnerMessage = document.querySelector('.home__winner');
 var homeButton = document.querySelector('.left__home');
+var fighterShowdown = document.querySelector('.fighter__showdown');
+var fighterPlayer = document.querySelector('.fighter__player');
+var fighterComputer = document.querySelector('.fighter__computer');
 
 // DATA MODEL //
 
@@ -20,16 +23,21 @@ var computerWins = 0;
 var playerWins = 0;
 var currentComputerSelection = {};
 var currentPlayerSelection = {};
-var winConditions = [['rock', 'scissors'], ['paper', 'rock'], ['scissors', 'paper']];
+var winConditions = [['rock', 'scissors'], ['paper', 'rock'], ['scissors', 'paper'], ['rock', 'wrestler'], ['paper', 'bomb'], ['scissors', 'wrestler'], ['bomb', 'rock'], ['bomb', 'scissors'], ['wrestler', 'paper'], ['wrestler', 'bomb']];
+var classicOrAdvanced = true; 
 
 // EVENT LISTENERS //
 
-homeClassicBox.addEventListener('click', fighterPage)
+homeClassicBox.addEventListener('click', function() {
+  fighterPage()
+  classicOrAdvanced = true;
+});
 fighter.addEventListener('click', displayWinner)
 homeButton.addEventListener('click', homePage)
 homeAdvancedBox.addEventListener('click', function() {
   fighterPage('advanced');
-})
+  classicOrAdvanced = false;
+});
 
 // FUNCTIONS //
 
@@ -56,8 +64,14 @@ function updateScore() {
   rightWins.innerText = 'Wins: ' + computerWins;
 }
 
+
 function createComputer() {
-  var randomIndex = Math.floor(Math.random() * 3)
+  if (classicOrAdvanced) {
+    var numOfFighters = 3;
+  } else {
+    numOfFighters = 5;
+  };
+  var randomIndex = Math.floor(Math.random() * numOfFighters)
   var selection = {};
   if (!randomIndex) {
     selection.name = 'rock';
@@ -65,14 +79,18 @@ function createComputer() {
   } else if (randomIndex === 1) {
     selection.name = 'paper';
     selection.icon = '📄';
-  } else {
+  } else if (randomIndex === 2) {
     selection.name = 'scissors';
     selection.icon = '✂️'
+  } else if (randomIndex === 3) {
+    selection.name = 'bomb';
+    selection.icon = '💣';
+  } else if (randomIndex === 4) {
+    selection.name = 'wrestler';
+    selection.icon = '🤼';
   }
   currentComputerSelection = selection;
 }
-
-// PAGES //
 
 function fighterPage(gameMode) {
   homeSubHeader.innerText = 'Choose your fighter!';
@@ -107,6 +125,12 @@ function createPlayer(event) {
   } else if (event.target.classList.contains('fighter__scissors')) {
     selection.name = 'scissors';
     selection.icon = '✂️';
+  } else if (event.target.classList.contains('fighter__bomb')) {
+    selection.name = 'bomb';
+    selection.icon = '💣';
+  } else if (event.target.classList.contains('fighter__wrestler')) {
+    selection.name = 'wrestler';
+    selection.icon = '🤼';
   }
   currentPlayerSelection = selection;
 }
@@ -114,23 +138,56 @@ function createPlayer(event) {
 function showdown() {
   setTimeout(function() {
     winnerMessage.classList.remove('fighter--hidden');
-    fighterClassic.innerHTML = 
-    `<box class="fighter__player">${currentPlayerSelection.icon}
-      <p class="fighter__icon">👐</p>
-    </box>
-    <p class="fighter__vs">⚔️</p>
-    <box class="fighter__computer">${currentComputerSelection.icon}
-      <p class="fighter__icon">🖥️</p>
-    </box>`
+    fighterClassic.classList.add('fighter--hidden')
+    fighterAdvanced.classList.add('fighter--hidden')
+    fighterShowdown.classList.remove('fighter--hidden');
+    fighterPlayer.innerText = currentPlayerSelection.icon;
+    fighterComputer.innerText = currentComputerSelection.icon;
+    
+    
+    // if (classicOrAdvanced) {
+    // fighterClassic.innerHTML = 
+    // `<p class="fighter__player">${currentPlayerSelection.icon}
+    //   <p class="fighter__icon">👐</p>
+    // </p>
+    // <p class="fighter__vs">⚔️</p>
+    // <p class="fighter__computer">${currentComputerSelection.icon}
+    //   <p class="fighter__icon">🖥️</p>
+    // </p>`
+    fighterAdvanced.classList.add('fighter--hidden')
+    // } else {
+    //   fighterClassic.innerHTML = 
+    //   `<p class="fighter__rock fighter__fighters">🪨</p>
+    //   <p class="fighter__paper fighter__fighters">📄</p>
+    //   <p class="fighter__scissors fighter__fighters">✂️</p>`
+    //   fighterAdvanced.innerHTML = 
+    //   `<p class="fighter__bomb fighter__fighters">💣</p>
+    //   <p class="fighter__wrestler fighter__fighters">🤼</p>`
+    // }
   }, 500)
 }
 
 function resetGame() {
   setTimeout(function() {
-    fighterClassic.innerHTML = 
-    `<p class="fighter__rock fighter__fighters">🪨</p>
-    <p class="fighter__paper fighter__fighters">📄</p>
-    <p class="fighter__scissors fighter__fighters">✂️</p>`;
+    if (classicOrAdvanced === true) {
+      fighterClassic.classList.remove('fighter--hidden')
+      fighterShowdown.classList.add('fighter--hidden');
+    } else {
+      fighterClassic.classList.remove('fighter--hidden')
+      fighterShowdown.classList.add('fighter--hidden');
+      fighterAdvanced.classList.remove('fighter--hidden')
+    }
+    // fighterClassic.innerHTML = 
+    // `<p class="fighter__rock fighter__fighters">🪨</p>
+    // <p class="fighter__paper fighter__fighters">📄</p>
+    // <p class="fighter__scissors fighter__fighters">✂️</p>`;
+    // } else {
+    //   fighterClassic.innerHTML = 
+    //  `<p class="fighter__rock fighter__fighters">🪨</p>
+    //   <p class="fighter__paper fighter__fighters">📄</p>
+    //   <p class="fighter__scissors fighter__fighters">✂️</p>`
+    //   fighterAdvanced.classList.remove('fighter--hidden')
+    // }
     winnerMessage.classList.add('fighter--hidden');
   }, 3000)
 }

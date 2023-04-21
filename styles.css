@@ -118,7 +118,7 @@ margin: .8em;
 font-weight: 300;
 }
 
-.fighter__classic, .fighter__advanced {
+.fighter__classic, .fighter__advanced, .fighter__showdown {
   width: 80%;
   height: 37%;
   margin: 0;
