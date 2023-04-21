@@ -1,7 +1,10 @@
 var homeSubHeader = document.querySelector('.home__subheader');
 var homeSelection = document.querySelectorAll('.home__selection');
 var homeClassicBox = document.querySelector('.home__classic');
+var homeAdvancedBox = document.querySelector('.home__advanced');
 var fighter = document.querySelector('.fighter');
+var fighterClassic = document.querySelector('.fighter__classic');
+var fighterAdvanced = document.querySelector('.fighter__advanced')
 var rock = document.querySelector('.fighter__rock');
 var paper = document.querySelector('.fighter__paper');
 var scissors = document.querySelector('.fighter__scissors');
@@ -24,6 +27,9 @@ var winConditions = [['rock', 'scissors'], ['paper', 'rock'], ['scissors', 'pape
 homeClassicBox.addEventListener('click', fighterPage)
 fighter.addEventListener('click', displayWinner)
 homeButton.addEventListener('click', homePage)
+homeAdvancedBox.addEventListener('click', function() {
+  fighterPage('advanced');
+})
 
 // FUNCTIONS //
 
@@ -68,13 +74,16 @@ function createComputer() {
 
 // PAGES //
 
-function fighterPage() {
+function fighterPage(gameMode) {
   homeSubHeader.innerText = 'Choose your fighter!';
+  fighter.classList.remove('fighter--hidden')
   for (var i = 0; i < homeSelection.length; i++) {
     homeSelection[i].classList.add('home--hidden');
   }
-  fighter.classList.remove('fighter--hidden');
   homeButton.classList.remove('left--hidden');
+  if (gameMode === 'advanced') {
+    fighterAdvanced.classList.remove('fighter--hidden');
+  }
 }
 
 function homePage() {
@@ -84,6 +93,7 @@ function homePage() {
   }
   fighter.classList.add('fighter--hidden');
   homeButton.classList.add('left--hidden');
+  fighterAdvanced.classList.add('fighter--hidden');
 }
 
 function createPlayer(event) {
@@ -104,7 +114,7 @@ function createPlayer(event) {
 function showdown() {
   setTimeout(function() {
     winnerMessage.classList.remove('fighter--hidden');
-    fighter.innerHTML = 
+    fighterClassic.innerHTML = 
     `<box class="fighter__player">${currentPlayerSelection.icon}
       <p class="fighter__icon">👐</p>
     </box>
@@ -117,10 +127,7 @@ function showdown() {
 
 function resetGame() {
   setTimeout(function() {
-    for (var i = 0; i < fighters.length; i++) {
-      fighters[i].classList.remove('fighter--hidden');
-    }
-    fighter.innerHTML = 
+    fighterClassic.innerHTML = 
     `<p class="fighter__rock fighter__fighters">🪨</p>
     <p class="fighter__paper fighter__fighters">📄</p>
     <p class="fighter__scissors fighter__fighters">✂️</p>`;
@@ -137,3 +144,6 @@ function displayWinner(event) {
   resetGame();
 }
 
+
+// Make event listener and function for advanced page.
+// See what functions can be made more dynamic to be reused in advanced mode.
