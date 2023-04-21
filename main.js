@@ -11,44 +11,40 @@ var rightWins = document.querySelector('.right__wins');
 var fighters = document.querySelectorAll('.fighter__fighters');
 var winnerMessage = document.querySelector('.home__winner');
 
+// DATA MODEL //
+
 var computerWins = 0;
 var playerWins = 0;
 var currentComputerSelection = {};
 var currentPlayerSelection = {};
+var winConditions = [['rock', 'scissors'], ['paper', 'rock'], ['scissors', 'paper']];
 
 // EVENT LISTENERS //
 
 homeClassicBox.addEventListener('click', fighterPage)
+fighter.addEventListener('click', displayWinner)
 
 // FUNCTIONS //
 
-
-function createGame(playerSelection, computerSelection) {
-  if (playerSelection === 'rock' && computerSelection === 'paper') {
-    computerWins = computerWins + 1;
-    winnerMessage.innerText = `Computer wins with ${computerSelection}!`;
-  } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-    playerWins = playerWins + 1;
-    winner = true;
-    winnerMessage.innerText = `Player wins with ${playerSelection}!`;
-  } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-    computerWins = computerWins + 1;
-    winnerMessage.innerText = `Computer wins with ${computerSelection}!`;
-  } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-    playerWins = playerWins + 1;
-    winner = true;
-    winnerMessage.innerText = `Player wins with ${playerSelection}!`;
-  } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-    computerWins = computerWins + 1;
-    winnerMessage.innerText = `Computer wins with ${computerSelection}!`;
-  } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-    playerWins = playerWins + 1;
-    winner = true;
-    winnerMessage.innerText = `Player wins with ${playerSelection}!`;
-  } else if (playerSelection === computerSelection) {
-    winner = null;
-    winnerMessage.innerText = 'Draw!';
+function createGame(player, computer) {
+  if (player === computer) {
+    return 'Draw!';
   }
+  for (var i = 0; i < winConditions.length; i++) {
+    if (player === winConditions[i][0] && computer === winConditions[i][1]) {
+      playerWins = playerWins + 1;
+      return `Player wins with ${player}!`;
+    } 
+  }
+  computerWins = computerWins + 1;
+  return `Computer wins with ${computer}!`;
+}
+
+function displayWinnerMessage(winner) {
+  winnerMessage.innerText = winner;
+}
+
+function updateScore() {
   leftWins.innerText = 'Wins: ' + playerWins;
   rightWins.innerText = 'Wins: ' + computerWins;
 }
@@ -121,10 +117,12 @@ function resetGame() {
   }, 3000)
 }
 
-fighter.addEventListener('click', function (event) {
+function displayWinner(event) {
   createPlayer(event);
   createComputer();
-  createGame(currentPlayerSelection.name, currentComputerSelection.name)
+  displayWinnerMessage(createGame(currentPlayerSelection.name, currentComputerSelection.name))
   showdown(currentPlayerSelection.name, currentComputerSelection.name)
+  updateScore()
   resetGame();
-})
+}
+
