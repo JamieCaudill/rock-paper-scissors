@@ -32,12 +32,20 @@ homeClassicBox.addEventListener('click', function() {
   fighterPage()
   classicOrAdvanced = true;
 });
-fighter.addEventListener('click', displayWinner)
-homeButton.addEventListener('click', homePage)
+
 homeAdvancedBox.addEventListener('click', function() {
   fighterPage('advanced');
   classicOrAdvanced = false;
 });
+
+fighter.addEventListener('click', function(event) {
+  displayWinner(event);
+})
+
+homeButton.addEventListener('click', function() {
+  homePage();
+})
+
 
 // FUNCTIONS //
 
@@ -64,13 +72,17 @@ function updateScore() {
   rightWins.innerText = 'Wins: ' + computerWins;
 }
 
-
-function createComputer() {
-  if (classicOrAdvanced) {
+function getNumOfFighters(gameMode) {
+  if (gameMode) {
     var numOfFighters = 3;
   } else {
     numOfFighters = 5;
-  };
+  }
+  return numOfFighters;
+}
+
+function createComputer() {
+  var numOfFighters = getNumOfFighters(classicOrAdvanced);
   var randomIndex = Math.floor(Math.random() * numOfFighters)
   var selection = {};
   if (!randomIndex) {
@@ -157,7 +169,7 @@ function display(name, addOrRemove, section) {
 function resetGame() {
   setTimeout(function() {
     display([fighterClassic], 'remove', 'fighter--hidden');
-    display([fighterShowdown], 'add', 'fighter--hidden');
+    display([fighterShowdown, winnerMessage], 'add', 'fighter--hidden');
     if (classicOrAdvanced === true) {
       display([fighterClassic], 'remove', 'fighter--hidden');
       display([fighterShowdown], 'add', 'fighter--hidden');
@@ -165,7 +177,6 @@ function resetGame() {
     } else {
       display([fighterAdvanced], 'remove', 'fighter--hidden');
     }
-    winnerMessage.classList.add('fighter--hidden');
   }, 3000)
 }
 
