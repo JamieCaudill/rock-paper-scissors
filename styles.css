@@ -1,3 +1,5 @@
+/* ROCK, PAPER, SCISSORS */
+
 * {
   font-family: 'Hind Siliguri', sans-serif; 
   color: #ffffff;
@@ -135,6 +137,7 @@ font-weight: 300;
   margin: 0;
   cursor: pointer;
 }
+
 .fighter__selected {
   margin: .3em 0 0 0;
   display: flex;
@@ -152,8 +155,9 @@ font-weight: 300;
 }
 
 .left__home {
-  width: 75%;
+  width: 60%;
   background-color: #ab49da;
+  border: 0; 
   opacity: 0.8;
   transition: .2s;
   cursor: pointer;

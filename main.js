@@ -1,3 +1,7 @@
+// ROCK, PAPER, SCISSORS //
+
+// VARIABLES //
+
 var homeSubHeader = document.querySelector('.home__subheader');
 var homeSelection = document.querySelectorAll('.home__selection');
 var homeClassicBox = document.querySelector('.home__classic');
@@ -40,11 +44,11 @@ homeAdvancedBox.addEventListener('click', function() {
 
 fighter.addEventListener('click', function(event) {
   displayWinner(event);
-})
+});
 
 homeButton.addEventListener('click', function() {
   homePage();
-})
+});
 
 
 // FUNCTIONS //
