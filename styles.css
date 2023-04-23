@@ -35,7 +35,7 @@ h1 {
   margin-bottom: -.3em;
 }
 
-h2, .home__winner {
+h2, .fighter__winner {
   font-size: 250%;
   text-align: center;
   width: 20em;
@@ -112,7 +112,7 @@ h2, .home__winner {
   align-items: center;
 }
 
-.home__winner {
+.fighter__winner {
 font-size: .2em;
 text-align: center;
 width: 20em;

@@ -6,20 +6,20 @@ var homeSubHeader = document.querySelector('.home__subheader');
 var homeSelection = document.querySelectorAll('.home__selection');
 var homeClassicBox = document.querySelector('.home__classic');
 var homeAdvancedBox = document.querySelector('.home__advanced');
-var fighter = document.querySelector('.fighter');
-var fighterClassic = document.querySelector('.fighter__classic');
-var fighterAdvanced = document.querySelector('.fighter__advanced')
+var homeButton = document.querySelector('.left__home');
 var rock = document.querySelector('.fighter__rock');
 var paper = document.querySelector('.fighter__paper');
 var scissors = document.querySelector('.fighter__scissors');
-var leftWins = document.querySelector('.left__wins');
-var rightWins = document.querySelector('.right__wins');
+var fighter = document.querySelector('.fighter');
+var fighterClassic = document.querySelector('.fighter__classic');
+var fighterAdvanced = document.querySelector('.fighter__advanced');
 var fighters = document.querySelectorAll('.fighter__fighters');
-var winnerMessage = document.querySelector('.home__winner');
-var homeButton = document.querySelector('.left__home');
 var fighterShowdown = document.querySelector('.fighter__showdown');
 var fighterPlayer = document.querySelector('.fighter__player');
 var fighterComputer = document.querySelector('.fighter__computer');
+var leftWins = document.querySelector('.left__wins');
+var rightWins = document.querySelector('.right__wins');
+var winnerMessage = document.querySelector('.fighter__winner');
 
 // DATA MODEL //
 
@@ -33,7 +33,7 @@ var classicOrAdvanced = true;
 // EVENT LISTENERS //
 
 homeClassicBox.addEventListener('click', function() {
-  fighterPage()
+  fighterPage();
   classicOrAdvanced = true;
 });
 
@@ -53,28 +53,38 @@ homeButton.addEventListener('click', function() {
 
 // FUNCTIONS //
 
-function createGame(player, computer) {
-  if (player === computer) {
-    return 'Draw!';
-  }
-  for (var i = 0; i < winConditions.length; i++) {
-    if (player === winConditions[i][0] && computer === winConditions[i][1]) {
-      playerWins = playerWins + 1;
-      return `Player wins!`;
-    } 
-  }
-  computerWins = computerWins + 1;
-  return `Computer wins!`;
-}
+// NAVIGATION //
 
-function displayWinnerMessage(winner) {
-  winnerMessage.innerText = winner;
-}
+function display(name, addOrRemove, section) {
+  for (var i = 0; i < name.length; i++) {
+    if (addOrRemove === 'add') {
+      name[i].classList.add(section);
+    } else {
+      name[i].classList.remove(section);
+    }
+  }
+};
 
-function updateScore() {
-  leftWins.innerText = 'Wins: ' + playerWins;
-  rightWins.innerText = 'Wins: ' + computerWins;
-}
+function fighterPage(gameMode) {
+  homeSubHeader.innerText = 'Choose your fighter!';
+  display([homeSelection[0], homeSelection[1]], 'add', 'home--hidden');
+  display([fighter], 'remove', 'fighter--hidden');
+  display([homeButton], 'remove', 'left--hidden');
+  display(fighterClassic, 'add', 'fighter--margin');
+  if (gameMode === 'advanced') {
+    display([fighterAdvanced], 'remove', 'fighter--hidden');
+    display([fighterClassic], 'remove', 'fighter--margin');
+  }
+};
+
+function homePage() {
+  homeSubHeader.innerText = 'Choose your game!';
+  display([homeSelection[0], homeSelection[1]], 'remove', 'home--hidden');
+  display([fighter], 'add', 'fighter--hidden');
+  display([homeButton], 'add', 'left--hidden');
+};
+
+// GAMEPLAY //
 
 function getNumOfFighters(gameMode) {
   if (gameMode) {
@@ -83,7 +93,7 @@ function getNumOfFighters(gameMode) {
     numOfFighters = 5;
   }
   return numOfFighters;
-}
+};
 
 function createComputer() {
   var numOfFighters = getNumOfFighters(classicOrAdvanced);
@@ -97,7 +107,7 @@ function createComputer() {
     selection.icon = '📄';
   } else if (randomIndex === 2) {
     selection.name = 'scissors';
-    selection.icon = '✂️'
+    selection.icon = '✂️';
   } else if (randomIndex === 3) {
     selection.name = 'bomb';
     selection.icon = '💣';
@@ -106,27 +116,7 @@ function createComputer() {
     selection.icon = '🤼';
   }
   return selection;
-}
-
-function fighterPage(gameMode) {
-  homeSubHeader.innerText = 'Choose your fighter!';
-  display([homeSelection[0], homeSelection[1]], 'add', 'home--hidden');
-  display([fighter], 'remove', 'fighter--hidden');
-  display([homeButton], 'remove', 'left--hidden');
-  display(fighterClassic, 'add', 'fighter--margin');
-  if (gameMode === 'advanced') {
-    display([fighterAdvanced], 'remove', 'fighter--hidden');
-    display([fighterClassic], 'remove', 'fighter--margin');
-  }
-}
-
-function homePage() {
-  homeSubHeader.innerText = 'Choose your game!';
-  display([homeSelection[0], homeSelection[1]], 'remove', 'home--hidden');
-  display([fighter], 'add', 'fighter--hidden');
-  display([homeButton], 'add', 'left--hidden');
-
-}
+};
 
 function createPlayer(event) {
   var selection = {};
@@ -147,7 +137,33 @@ function createPlayer(event) {
     selection.icon = '🤼';
   }
   return selection;
-}
+};
+
+function createGame(player, computer) {
+  if (player === computer) {
+    return 'Draw!';
+  }
+  for (var i = 0; i < winConditions.length; i++) {
+    if (player === winConditions[i][0] && computer === winConditions[i][1]) {
+      playerWins = playerWins + 1;
+      return `Player wins!`;
+    } 
+  }
+  computerWins = computerWins + 1;
+  return `Computer wins!`;
+};
+
+// UPDATE DOM //
+
+function displayWinnerMessage(winner) {
+  winnerMessage.innerText = winner;
+};
+
+function updateScore() {
+  leftWins.innerText = 'Wins: ' + playerWins;
+  rightWins.innerText = 'Wins: ' + computerWins;
+};
+
 
 function showdown() {
   setTimeout(function() {
@@ -158,17 +174,7 @@ function showdown() {
     displayWinnerMessage(createGame(currentPlayerSelection.name, currentComputerSelection.name));
     updateScore();
   }, 500)
-}
-
-function display(name, addOrRemove, section) {
-  for (var i = 0; i < name.length; i++) {
-    if (addOrRemove === 'add') {
-      name[i].classList.add(section);
-    } else {
-      name[i].classList.remove(section);
-    }
-  }
-}
+};
 
 function resetGame() {
   setTimeout(function() {
@@ -182,15 +188,12 @@ function resetGame() {
       display([fighterAdvanced], 'remove', 'fighter--hidden');
     }
   }, 3000)
-}
+};
 
 function displayWinner(event) {
   currentPlayerSelection = createPlayer(event);
   currentComputerSelection = createComputer();
   showdown(currentPlayerSelection.name, currentComputerSelection.name);
   resetGame();
-}
+};
 
-
-// Make event listener and function for advanced page.
-// See what functions can be made more dynamic to be reused in advanced mode.
