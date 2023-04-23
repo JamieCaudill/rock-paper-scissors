@@ -127,6 +127,10 @@ font-weight: 300;
   align-items: flex-start;
 }
 
+.fighter__showdown {
+  justify-content: space-between;
+}
+
 .fighter__fighters {
   margin: 0;
   cursor: pointer;
@@ -145,11 +149,6 @@ font-weight: 300;
 .fighter__icon {
   font-size: .3em;
   margin: -.5em 0 0 0;
-}
-
-.fighter__vs {
-  font-size: .4em;
-  margin: 2em 0 0 0;
 }
 
 .left__home {
@@ -171,3 +170,6 @@ font-weight: 300;
   display: none;
 }
 
+.fighter--margin {
+  margin-top: .5em;
+}

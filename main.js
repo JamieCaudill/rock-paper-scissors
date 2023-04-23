@@ -94,13 +94,15 @@ function createComputer() {
 
 function fighterPage(gameMode) {
   homeSubHeader.innerText = 'Choose your fighter!';
-  fighter.classList.remove('fighter--hidden')
+  fighter.classList.remove('fighter--hidden');
+  fighterClassic.classList.add('fighter--margin');
   for (var i = 0; i < homeSelection.length; i++) {
     homeSelection[i].classList.add('home--hidden');
   }
   homeButton.classList.remove('left--hidden');
   if (gameMode === 'advanced') {
     fighterAdvanced.classList.remove('fighter--hidden');
+    fighterClassic.classList.remove('fighter--margin');
   }
 }
 
@@ -143,51 +145,21 @@ function showdown() {
     fighterShowdown.classList.remove('fighter--hidden');
     fighterPlayer.innerText = currentPlayerSelection.icon;
     fighterComputer.innerText = currentComputerSelection.icon;
-    
-    
-    // if (classicOrAdvanced) {
-    // fighterClassic.innerHTML = 
-    // `<p class="fighter__player">${currentPlayerSelection.icon}
-    //   <p class="fighter__icon">👐</p>
-    // </p>
-    // <p class="fighter__vs">⚔️</p>
-    // <p class="fighter__computer">${currentComputerSelection.icon}
-    //   <p class="fighter__icon">🖥️</p>
-    // </p>`
     fighterAdvanced.classList.add('fighter--hidden')
-    // } else {
-    //   fighterClassic.innerHTML = 
-    //   `<p class="fighter__rock fighter__fighters">🪨</p>
-    //   <p class="fighter__paper fighter__fighters">📄</p>
-    //   <p class="fighter__scissors fighter__fighters">✂️</p>`
-    //   fighterAdvanced.innerHTML = 
-    //   `<p class="fighter__bomb fighter__fighters">💣</p>
-    //   <p class="fighter__wrestler fighter__fighters">🤼</p>`
-    // }
   }, 500)
 }
 
 function resetGame() {
   setTimeout(function() {
     if (classicOrAdvanced === true) {
-      fighterClassic.classList.remove('fighter--hidden')
+      fighterClassic.classList.remove('fighter--hidden');
       fighterShowdown.classList.add('fighter--hidden');
+      fighterClassic.classList.add('fighter--margin');
     } else {
-      fighterClassic.classList.remove('fighter--hidden')
+      fighterClassic.classList.remove('fighter--hidden');
       fighterShowdown.classList.add('fighter--hidden');
-      fighterAdvanced.classList.remove('fighter--hidden')
+      fighterAdvanced.classList.remove('fighter--hidden');
     }
-    // fighterClassic.innerHTML = 
-    // `<p class="fighter__rock fighter__fighters">🪨</p>
-    // <p class="fighter__paper fighter__fighters">📄</p>
-    // <p class="fighter__scissors fighter__fighters">✂️</p>`;
-    // } else {
-    //   fighterClassic.innerHTML = 
-    //  `<p class="fighter__rock fighter__fighters">🪨</p>
-    //   <p class="fighter__paper fighter__fighters">📄</p>
-    //   <p class="fighter__scissors fighter__fighters">✂️</p>`
-    //   fighterAdvanced.classList.remove('fighter--hidden')
-    // }
     winnerMessage.classList.add('fighter--hidden');
   }, 3000)
 }
