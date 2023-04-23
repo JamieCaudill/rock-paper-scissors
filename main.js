@@ -139,14 +139,22 @@ function createPlayer(event) {
 
 function showdown() {
   setTimeout(function() {
-    winnerMessage.classList.remove('fighter--hidden');
-    fighterClassic.classList.add('fighter--hidden')
-    fighterAdvanced.classList.add('fighter--hidden')
-    fighterShowdown.classList.remove('fighter--hidden');
+    display([fighterClassic, fighterAdvanced], 'add', 'fighter--hidden');
+    display([fighterShowdown, winnerMessage], 'remove', 'fighter--hidden');
     fighterPlayer.innerText = currentPlayerSelection.icon;
     fighterComputer.innerText = currentComputerSelection.icon;
-    fighterAdvanced.classList.add('fighter--hidden')
+    displayWinnerMessage(createGame(currentPlayerSelection.name, currentComputerSelection.name));
   }, 500)
+}
+
+function display(name, addOrRemove, section) {
+  for (var i = 0; i < name.length; i++) {
+    if (addOrRemove === 'add') {
+      name[i].classList.add(section);
+    } else {
+      name[i].classList.remove(section);
+    }
+  }
 }
 
 function resetGame() {
@@ -167,9 +175,8 @@ function resetGame() {
 function displayWinner(event) {
   createPlayer(event);
   createComputer();
-  displayWinnerMessage(createGame(currentPlayerSelection.name, currentComputerSelection.name))
-  showdown(currentPlayerSelection.name, currentComputerSelection.name)
-  updateScore()
+  showdown(currentPlayerSelection.name, currentComputerSelection.name);
+  updateScore();
   resetGame();
 }
 
