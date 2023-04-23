@@ -48,11 +48,11 @@ function createGame(player, computer) {
   for (var i = 0; i < winConditions.length; i++) {
     if (player === winConditions[i][0] && computer === winConditions[i][1]) {
       playerWins = playerWins + 1;
-      return `Player wins with ${player}!`;
+      return `Player wins!`;
     } 
   }
   computerWins = computerWins + 1;
-  return `Computer wins with ${computer}!`;
+  return `Computer wins!`;
 }
 
 function displayWinnerMessage(winner) {

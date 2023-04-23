@@ -1,7 +1,7 @@
 * {
   font-family: 'Hind Siliguri', sans-serif; 
   color: #ffffff;
-  border: solid 1px black;
+  /* border: solid 1px black; */
 }
 
 html {
@@ -114,7 +114,7 @@ h2, .home__winner {
 font-size: .2em;
 text-align: center;
 width: 20em;
-margin: .8em;
+margin: 2em;
 font-weight: 300;
 }
 
@@ -131,12 +131,15 @@ font-weight: 300;
   margin: 0;
   cursor: pointer;
 }
-.fighter__player, .fighter__computer {
+.fighter__selected {
   margin: .3em 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
 
+.fighter__player, .fighter__computer {
+  margin: 0;
 }
 
 .fighter__icon {
