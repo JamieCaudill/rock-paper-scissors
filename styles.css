@@ -43,8 +43,6 @@ h2, .fighter__winner {
   font-weight: 300;
 }
 
-
-
 .home__selection {
   height: 26vh;
   width: 30vw;
@@ -166,7 +164,6 @@ font-weight: 300;
 .left__home:hover {
   opacity: 1;
 } 
-
 
 /* Modifiers */
 

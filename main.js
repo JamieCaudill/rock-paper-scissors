@@ -153,7 +153,7 @@ function createGame(player, computer) {
   return `Computer wins!`;
 };
 
-// UPDATE DOM //
+// DOM //
 
 function displayWinnerMessage(winner) {
   winnerMessage.innerText = winner;
@@ -163,7 +163,6 @@ function updateScore() {
   leftWins.innerText = 'Wins: ' + playerWins;
   rightWins.innerText = 'Wins: ' + computerWins;
 };
-
 
 function showdown() {
   setTimeout(function() {
