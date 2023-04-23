@@ -89,31 +89,27 @@ function createComputer() {
     selection.name = 'wrestler';
     selection.icon = '🤼';
   }
-  currentComputerSelection = selection;
+  return selection;
 }
 
 function fighterPage(gameMode) {
   homeSubHeader.innerText = 'Choose your fighter!';
-  fighter.classList.remove('fighter--hidden');
-  fighterClassic.classList.add('fighter--margin');
-  for (var i = 0; i < homeSelection.length; i++) {
-    homeSelection[i].classList.add('home--hidden');
-  }
-  homeButton.classList.remove('left--hidden');
+  display([homeSelection[0], homeSelection[1]], 'add', 'home--hidden');
+  display([fighter], 'remove', 'fighter--hidden');
+  display([homeButton], 'remove', 'left--hidden');
+  display(fighterClassic, 'add', 'fighter--margin');
   if (gameMode === 'advanced') {
-    fighterAdvanced.classList.remove('fighter--hidden');
-    fighterClassic.classList.remove('fighter--margin');
+    display([fighterAdvanced], 'remove', 'fighter--hidden');
+    display([fighterClassic], 'remove', 'fighter--margin');
   }
 }
 
 function homePage() {
   homeSubHeader.innerText = 'Choose your game!';
-  for (var i = 0; i < homeSelection.length; i++) {
-    homeSelection[i].classList.remove('home--hidden');
-  }
-  fighter.classList.add('fighter--hidden');
-  homeButton.classList.add('left--hidden');
-  fighterAdvanced.classList.add('fighter--hidden');
+  display([homeSelection[0], homeSelection[1]], 'remove', 'home--hidden');
+  display([fighter], 'add', 'fighter--hidden');
+  display([homeButton], 'add', 'left--hidden');
+
 }
 
 function createPlayer(event) {
@@ -134,7 +130,7 @@ function createPlayer(event) {
     selection.name = 'wrestler';
     selection.icon = '🤼';
   }
-  currentPlayerSelection = selection;
+  return selection;
 }
 
 function showdown() {
@@ -144,6 +140,7 @@ function showdown() {
     fighterPlayer.innerText = currentPlayerSelection.icon;
     fighterComputer.innerText = currentComputerSelection.icon;
     displayWinnerMessage(createGame(currentPlayerSelection.name, currentComputerSelection.name));
+    updateScore();
   }, 500)
 }
 
@@ -159,24 +156,23 @@ function display(name, addOrRemove, section) {
 
 function resetGame() {
   setTimeout(function() {
+    display([fighterClassic], 'remove', 'fighter--hidden');
+    display([fighterShowdown], 'add', 'fighter--hidden');
     if (classicOrAdvanced === true) {
-      fighterClassic.classList.remove('fighter--hidden');
-      fighterShowdown.classList.add('fighter--hidden');
-      fighterClassic.classList.add('fighter--margin');
+      display([fighterClassic], 'remove', 'fighter--hidden');
+      display([fighterShowdown], 'add', 'fighter--hidden');
+      display([fighterClassic], 'add', 'fighter--margin');
     } else {
-      fighterClassic.classList.remove('fighter--hidden');
-      fighterShowdown.classList.add('fighter--hidden');
-      fighterAdvanced.classList.remove('fighter--hidden');
+      display([fighterAdvanced], 'remove', 'fighter--hidden');
     }
     winnerMessage.classList.add('fighter--hidden');
   }, 3000)
 }
 
 function displayWinner(event) {
-  createPlayer(event);
-  createComputer();
+  currentPlayerSelection = createPlayer(event);
+  currentComputerSelection = createComputer();
   showdown(currentPlayerSelection.name, currentComputerSelection.name);
-  updateScore();
   resetGame();
 }
 
