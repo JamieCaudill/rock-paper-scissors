@@ -30,19 +30,36 @@
       <section class="home__selection">
         <box class="home__box home__advanced">
           <p class="home__option">ADVANCED</p>
-          <p class="home__rules">TBD</p>
-          <p class="home__rules">TBD</p>
-          <p class="home__rules">TBD</p>
-          <p class="home__rules">TBD</p>
-          <p class="home__rules">TBD</p>
+          <p class="home__rules">rock > scissors & wrestler</p>
+          <p class="home__rules">paper > rock & bomb</p>
+          <p class="home__rules">scissors > paper & wrestler</p>
+          <p class="home__rules">bomb > rock & scissors</p>
+          <p class="home__rules">wrestler > paper & bomb</p>
         </box>
       </section>
       <section class="fighter fighter--hidden">
-        <p class="fighter__rock fighter__fighters">🪨</p>
-        <p class="fighter__paper fighter__fighters">📄</p>
-        <p class="fighter__scissors fighter__fighters">✂️</p>
+        <div class="fighter__classic fighter--margin">
+          <p class="fighter__rock fighter__fighters">🪨</p>
+          <p class="fighter__paper fighter__fighters">📄</p>
+          <p class="fighter__scissors fighter__fighters">✂️</p>
+        </div>
+        <div class="fighter__advanced fighter--hidden">
+          <p class="fighter__bomb fighter__fighters">💣</p>
+          <p class="fighter__wrestler fighter__fighters">🤼</p>
+        </div>
+        <div class="fighter__showdown fighter--hidden">
+          <div class="fighter__selected">
+            <p class="fighter__player"></p>
+            <p class="fighter__icon">👐</p>
+          </div>
+          <div class="fighter__selected">
+            <p class="fighter__computer"></p>
+            <p class="fighter__icon">🖥️</p>
+          </div>
+        </div>
+        <p class="fighter__winner"></p>
       </section>
-      <p class="home__winner"></p>
+      
     </section>
     <section class="right">
       <p class="right__emoji">🖥️</p>

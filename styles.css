@@ -1,6 +1,9 @@
+/* ROCK, PAPER, SCISSORS */
+
 * {
   font-family: 'Hind Siliguri', sans-serif; 
   color: #ffffff;
+  /* border: solid 1px black; */
 }
 
 html {
@@ -32,7 +35,7 @@ h1 {
   margin-bottom: -.3em;
 }
 
-h2, .home__winner {
+h2, .fighter__winner {
   font-size: 250%;
   text-align: center;
   width: 20em;
@@ -99,25 +102,49 @@ h2, .home__winner {
 }
 
 .fighter {
-  width: 80%;
-  height: 55%;
+  width: 100%;
+  height: 100%;
   font-size: 16em;
-  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fighter__winner {
+font-size: .2em;
+text-align: center;
+width: 20em;
+margin: 2em;
+font-weight: 300;
+}
+
+.fighter__classic, .fighter__advanced, .fighter__showdown {
+  width: 80%;
+  height: 37%;
+  margin: 0;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
 }
 
+.fighter__showdown {
+  justify-content: space-between;
+}
+
 .fighter__fighters {
-  margin-top: .7em;
+  margin: 0;
   cursor: pointer;
 }
-.fighter__player, .fighter__computer {
+
+.fighter__selected {
   margin: .3em 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
 
+.fighter__player, .fighter__computer {
+  margin: 0;
 }
 
 .fighter__icon {
@@ -125,14 +152,10 @@ h2, .home__winner {
   margin: -.5em 0 0 0;
 }
 
-.fighter__vs {
-  font-size: .4em;
-  margin: 2em 0 0 0;
-}
-
 .left__home {
-  width: 75%;
+  width: 60%;
   background-color: #ab49da;
+  border: 0; 
   opacity: 0.8;
   transition: .2s;
   cursor: pointer;
@@ -148,3 +171,6 @@ h2, .home__winner {
   display: none;
 }
 
+.fighter--margin {
+  margin-top: .5em;
+}
