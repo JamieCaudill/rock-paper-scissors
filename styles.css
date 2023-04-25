@@ -58,6 +58,7 @@ h2, .fighter__winner {
 .home__box {
   height: 19vh;
   width: 15vw;
+  border-radius: 1em;
   background-color: #ab49da;
   opacity: 0.8;
   transition: .2s;
