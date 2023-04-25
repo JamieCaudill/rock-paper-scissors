@@ -3,7 +3,6 @@
 * {
   font-family: 'Hind Siliguri', sans-serif; 
   color: #ffffff;
-  /* border: solid 1px black; */
 }
 
 html {
@@ -58,6 +57,7 @@ h2, .fighter__winner {
 .home__box {
   height: 19vh;
   width: 15vw;
+  border-radius: 1em;
   background-color: #ab49da;
   opacity: 0.8;
   transition: .2s;
@@ -174,6 +174,7 @@ font-weight: 300;
 
 .left__home:hover {
   opacity: 1;
+  font-size: .7em;
 } 
 
 /* MODS */
