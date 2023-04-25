@@ -14,7 +14,6 @@ var fighter = document.querySelector('.fighter');
 var fighterClassic = document.querySelector('.fighter__classic');
 var fighterAdvanced = document.querySelector('.fighter__advanced');
 var fighterMode = document.querySelector('.fighter__mode');
-var fighters = document.querySelectorAll('.fighter__fighters');
 var fighterShowdown = document.querySelector('.fighter__showdown');
 var fighterPlayer = document.querySelector('.fighter__player');
 var fighterComputer = document.querySelector('.fighter__computer');
@@ -44,10 +43,6 @@ homeAdvancedBox.addEventListener('click', function() {
 fighterMode.addEventListener('click', function(event) {
   displayWinner(event);
 });
-
-// fighterAdvanced.addEventListener('click', function(event) {
-//   displayWinner(event);
-// });
 
 homeButton.addEventListener('click', function() {
   homePage();
