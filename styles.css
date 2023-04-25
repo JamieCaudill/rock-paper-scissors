@@ -22,12 +22,15 @@ body {
 
 }
 
-.home {
-  height: 100vh;
-  width: 70vw;
+.home, .home__box, .left, .right, .fighter, .fighter__mode, .fighter__selected {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.home {
+  height: 100vh;
+  width: 70vw;
 }
 
 h1 {
@@ -55,9 +58,6 @@ h2, .fighter__winner {
 .home__box {
   height: 19vh;
   width: 15vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #ab49da;
   opacity: 0.8;
   transition: .2s;
@@ -83,9 +83,6 @@ h2, .fighter__winner {
 }
 
 .left, .right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   height: 100vh;
   width: 15vw;
   background-color: #cd82f0;
@@ -105,16 +102,17 @@ h2, .fighter__winner {
   width: 100%;
   height: 100%;
   font-size: 16em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+.fighter__mode {
+  width: 100%;
 }
 
 .fighter__winner {
 font-size: .2em;
 text-align: center;
 width: 20em;
-margin: 2em;
+margin: 4em;
 font-weight: 300;
 }
 
@@ -127,10 +125,6 @@ font-weight: 300;
   align-items: flex-start;
 }
 
-.fighter__showdown {
-  justify-content: space-between;
-}
-
 .fighter__fighters {
   margin: 0;
   cursor: pointer;
@@ -138,9 +132,6 @@ font-weight: 300;
 
 .fighter__selected {
   margin: .3em 0 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .fighter__player, .fighter__computer {
@@ -165,7 +156,7 @@ font-weight: 300;
   opacity: 1;
 } 
 
-/* Modifiers */
+/* MODS */
 
 .home--hidden, .fighter--hidden, .left--hidden {
   display: none;

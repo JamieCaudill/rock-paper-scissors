@@ -13,6 +13,7 @@ var scissors = document.querySelector('.fighter__scissors');
 var fighter = document.querySelector('.fighter');
 var fighterClassic = document.querySelector('.fighter__classic');
 var fighterAdvanced = document.querySelector('.fighter__advanced');
+var fighterMode = document.querySelector('.fighter__mode');
 var fighters = document.querySelectorAll('.fighter__fighters');
 var fighterShowdown = document.querySelector('.fighter__showdown');
 var fighterPlayer = document.querySelector('.fighter__player');
@@ -40,9 +41,13 @@ homeAdvancedBox.addEventListener('click', function() {
   fighterPage();
 });
 
-fighter.addEventListener('click', function(event) {
+fighterMode.addEventListener('click', function(event) {
   displayWinner(event);
 });
+
+// fighterAdvanced.addEventListener('click', function(event) {
+//   displayWinner(event);
+// });
 
 homeButton.addEventListener('click', function() {
   homePage();
@@ -163,8 +168,6 @@ function updateScore() {
   rightWins.innerText = 'Wins: ' + currentComputerSelection.wins;
 };
 
-fighter.removeEventListener('click', createPlayer);
-
 function showdown() {
   setTimeout(function() {
     hide([fighterClassic, fighterAdvanced], 'fighter--hidden');
@@ -195,7 +198,6 @@ function resetGame() {
 function displayWinner(event) {
   createPlayer(event, currentPlayerSelection);
   createComputer(currentComputerSelection);
-  console.log(currentPlayerSelection)
   showdown(currentPlayerSelection.name, currentComputerSelection.name);
   resetGame();
 };
