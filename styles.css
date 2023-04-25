@@ -19,15 +19,17 @@ body {
   margin: 0;
   background-color: #c76af1;
   display: flex;
+}
 
+.home, .home__box, .left, .right, .fighter, .fighter__mode, .fighter__selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .home {
   height: 100vh;
   width: 70vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 h1 {
@@ -36,7 +38,7 @@ h1 {
 }
 
 h2, .fighter__winner {
-  font-size: 250%;
+  font-size: 2.5em;
   text-align: center;
   width: 20em;
   margin: 0;
@@ -50,14 +52,12 @@ h2, .fighter__winner {
   justify-content: center;
   align-items: flex-end;
   margin: 2em;
+  animation: fade-in .5s ease-in;
 }
 
 .home__box {
   height: 19vh;
   width: 15vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #ab49da;
   opacity: 0.8;
   transition: .2s;
@@ -66,6 +66,21 @@ h2, .fighter__winner {
 
 .home__box:hover {
   opacity: 1;
+  font-size: 1.1em;
+}
+
+.home__classic:hover {
+  height: 20vh;
+  width: 16vw;
+}
+
+.home__advanced {
+  height: 24vh;
+}
+
+.home__advanced:hover {
+  height: 25vh;
+  width: 16vw;
 }
 
 .home__option {
@@ -78,14 +93,7 @@ h2, .fighter__winner {
   margin: 0;
 }
 
-.home__advanced {
-  height: 24vh;
-}
-
 .left, .right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   height: 100vh;
   width: 15vw;
   background-color: #cd82f0;
@@ -105,16 +113,17 @@ h2, .fighter__winner {
   width: 100%;
   height: 100%;
   font-size: 16em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+.fighter__mode {
+  width: 100%;
 }
 
 .fighter__winner {
 font-size: .2em;
 text-align: center;
 width: 20em;
-margin: 2em;
+margin: 4em;
 font-weight: 300;
 }
 
@@ -125,31 +134,33 @@ font-weight: 300;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-}
-
-.fighter__showdown {
-  justify-content: space-between;
+  animation: fade-in .5s ease-in;
 }
 
 .fighter__fighters {
   margin: 0;
   cursor: pointer;
+  transition: .1s ease-in;
+}
+
+.fighter__fighters:hover {
+  font-size: 1.05em;
 }
 
 .fighter__selected {
   margin: .3em 0 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .fighter__player, .fighter__computer {
   margin: 0;
+  font-size: 1.05em;
+  animation: fade-in .5s ease-in;
 }
 
 .fighter__icon {
   font-size: .3em;
   margin: -.5em 0 0 0;
+  animation: fade-in .5s ease-in;
 }
 
 .left__home {
@@ -165,7 +176,7 @@ font-weight: 300;
   opacity: 1;
 } 
 
-/* Modifiers */
+/* MODS */
 
 .home--hidden, .fighter--hidden, .left--hidden {
   display: none;
@@ -173,4 +184,12 @@ font-weight: 300;
 
 .fighter--margin {
   margin-top: .5em;
+}
+
+/* ANIMATION */
+
+
+@keyframes fade-in {
+  0% {opacity: 0}
+  100% {opacity: 100%} 
 }
