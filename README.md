@@ -1,7 +1,7 @@
 # ColoRandom
 
 ### Abstract:
-Rock, Paper, Scissors is a web-based application that allows the user to play the classic game of Rock, Paper, Scissors against a computer opponent. Or, if the user is feeling adventurous, they can select the **Advanced** game mode to select between five different fighters, including *bomb* and *wrestler*. Once a game mode is selected, the fighters are displayed, and the user selects one that is paired up against a randomly generated fighter and the winner is announced and the wins are updated on the left and right sides of the application. The user is able to go back to the home page and switch game modes whenever they would like, and the score remains until the application is refreshed or reloaded. 
+Rock, Paper, Scissors is a web-based application that allows the user to play the classic game of Rock, Paper, Scissors against a computer opponent. Or, if the user is feeling adventurous, they can select the **Advanced** game mode to select between five different fighters, including *bomb* and *wrestler*. Once a game mode is selected, the fighters are displayed, and the user selects one that is paired up against a randomly generated fighter. The winner is then announced and the wins are updated on the left and right sides of the application. The user is able to go back to the home page and switch game modes at any point, and the score remains until the application is refreshed or reloaded. 
 
 ### Installation Instructions:
 1. Fork this repository
