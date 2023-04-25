@@ -39,7 +39,7 @@ h1 {
 }
 
 h2, .fighter__winner {
-  font-size: 250%;
+  font-size: 2.5em;
   text-align: center;
   width: 20em;
   margin: 0;
@@ -53,6 +53,7 @@ h2, .fighter__winner {
   justify-content: center;
   align-items: flex-end;
   margin: 2em;
+  animation: fade-in .5s ease-in;
 }
 
 .home__box {
@@ -66,6 +67,21 @@ h2, .fighter__winner {
 
 .home__box:hover {
   opacity: 1;
+  font-size: 1.1em;
+}
+
+.home__classic:hover {
+  height: 20vh;
+  width: 16vw;
+}
+
+.home__advanced {
+  height: 24vh;
+}
+
+.home__advanced:hover {
+  height: 25vh;
+  width: 16vw;
 }
 
 .home__option {
@@ -76,10 +92,6 @@ h2, .fighter__winner {
 .home__rules {
   font-size: 1.3em;
   margin: 0;
-}
-
-.home__advanced {
-  height: 24vh;
 }
 
 .left, .right {
@@ -123,11 +135,17 @@ font-weight: 300;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+  animation: fade-in .5s ease-in;
 }
 
 .fighter__fighters {
   margin: 0;
   cursor: pointer;
+  transition: .1s ease-in;
+}
+
+.fighter__fighters:hover {
+  font-size: 1.05em;
 }
 
 .fighter__selected {
@@ -136,11 +154,14 @@ font-weight: 300;
 
 .fighter__player, .fighter__computer {
   margin: 0;
+  font-size: 1.05em;
+  animation: fade-in .5s ease-in;
 }
 
 .fighter__icon {
   font-size: .3em;
   margin: -.5em 0 0 0;
+  animation: fade-in .5s ease-in;
 }
 
 .left__home {
@@ -164,4 +185,12 @@ font-weight: 300;
 
 .fighter--margin {
   margin-top: .5em;
+}
+
+/* ANIMATION */
+
+
+@keyframes fade-in {
+  0% {opacity: 0}
+  100% {opacity: 100%} 
 }

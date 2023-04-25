@@ -172,7 +172,7 @@ function showdown() {
     fighterComputer.innerText = currentComputerSelection.icon;
     displayWinnerMessage(createGame(currentPlayerSelection.name, currentComputerSelection.name));
     updateScore();
-  }, 500)
+  }, 200)
 };
 
 function resetGame() {
@@ -187,7 +187,7 @@ function resetGame() {
     } else {
       show([fighterAdvanced], 'fighter--hidden');
     }
-  }, 3000)
+  }, 2200)
 };
 
 function displayWinner(event) {
