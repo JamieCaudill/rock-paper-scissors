@@ -10,7 +10,7 @@ Rock, Paper, Scissors is a web-based application that allows the user to play th
 4. Run `open index.html` to launch the application in the user's default browser
 
 ### Preview of App:
-![app preview](https://imgur.com/MikTsSn.gif)
+![app preview](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjE4Mzc4NTUzNzk4NzBiNTFkYmZjMDVmMWUxN2ZiMzZkNTQxZmEwZSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/aJdTdi4A6r8DMgMxDa/giphy.gif)
 
 ### Context:
 This project was assigned in Week 5 of Module 1 and we were given one week to complete it. Individually I averaged around 4 hours per day working on it. A majority of my time was spent researching and refactoring.
