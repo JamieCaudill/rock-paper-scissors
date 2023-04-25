@@ -19,7 +19,6 @@ body {
   margin: 0;
   background-color: #c76af1;
   display: flex;
-
 }
 
 .home, .home__box, .left, .right, .fighter, .fighter__mode, .fighter__selected {

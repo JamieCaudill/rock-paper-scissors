@@ -48,8 +48,6 @@ homeButton.addEventListener('click', function() {
   homePage();
 });
 
-
-
 // FUNCTIONS //
 
 // NAVIGATION //
