@@ -3,7 +3,6 @@
 * {
   font-family: 'Hind Siliguri', sans-serif; 
   color: #ffffff;
-  /* border: solid 1px black; */
 }
 
 html {
@@ -175,6 +174,7 @@ font-weight: 300;
 
 .left__home:hover {
   opacity: 1;
+  font-size: .7em;
 } 
 
 /* MODS */
