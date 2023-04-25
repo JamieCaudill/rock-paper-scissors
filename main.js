@@ -23,23 +23,21 @@ var winnerMessage = document.querySelector('.fighter__winner');
 
 // DATA MODEL //
 
-var computerWins = 0;
-var playerWins = 0;
-var currentComputerSelection = {};
-var currentPlayerSelection = {};
+var currentComputerSelection = {wins: 0};
+var currentPlayerSelection = {wins: 0};
 var winConditions = [['rock', 'scissors'], ['paper', 'rock'], ['scissors', 'paper'], ['rock', 'wrestler'], ['paper', 'bomb'], ['scissors', 'wrestler'], ['bomb', 'rock'], ['bomb', 'scissors'], ['wrestler', 'paper'], ['wrestler', 'bomb']];
 var classicOrAdvanced = true; 
 
 // EVENT LISTENERS //
 
 homeClassicBox.addEventListener('click', function() {
-  fighterPage();
   classicOrAdvanced = true;
+  fighterPage();
 });
 
 homeAdvancedBox.addEventListener('click', function() {
-  fighterPage('advanced');
   classicOrAdvanced = false;
+  fighterPage();
 });
 
 fighter.addEventListener('click', function(event) {
@@ -49,6 +47,7 @@ fighter.addEventListener('click', function(event) {
 homeButton.addEventListener('click', function() {
   homePage();
 });
+
 
 
 // FUNCTIONS //
@@ -67,15 +66,17 @@ function hide(name, section) {
   }
 };
 
-function fighterPage(gameMode) {
+function fighterPage() {
   homeSubHeader.innerText = 'Choose your fighter!';
   hide([homeSelection[0], homeSelection[1]], 'home--hidden');
   show([fighter], 'fighter--hidden');
   show([homeButton], 'left--hidden');
-  hide(fighterClassic, 'fighter--margin');
-  if (gameMode === 'advanced') {
+  hide([fighterClassic], 'fighter--margin');
+  if (!classicOrAdvanced) {
     show([fighterAdvanced], 'fighter--hidden');
     show([fighterClassic], 'fighter--margin');
+  } else {
+    hide([fighterAdvanced], 'fighter--hidden');
   }
 };
 
@@ -97,10 +98,9 @@ function getNumOfFighters(gameMode) {
   return numOfFighters;
 };
 
-function createComputer() {
+function createComputer(selection) {
   var numOfFighters = getNumOfFighters(classicOrAdvanced);
   var randomIndex = Math.floor(Math.random() * numOfFighters)
-  var selection = {};
   if (!randomIndex) {
     selection.name = 'rock';
     selection.icon = '🪨';
@@ -117,11 +117,9 @@ function createComputer() {
     selection.name = 'wrestler';
     selection.icon = '🤼';
   }
-  return selection;
 };
 
-function createPlayer(event) {
-  var selection = {};
+function createPlayer(event, selection) {
   if (event.target.classList.contains('fighter__rock')) {
     selection.name = 'rock';
     selection.icon = '🪨';
@@ -137,8 +135,7 @@ function createPlayer(event) {
   } else if (event.target.classList.contains('fighter__wrestler')) {
     selection.name = 'wrestler';
     selection.icon = '🤼';
-  }
-  return selection;
+  } 
 };
 
 function createGame(player, computer) {
@@ -147,11 +144,11 @@ function createGame(player, computer) {
   }
   for (var i = 0; i < winConditions.length; i++) {
     if (player === winConditions[i][0] && computer === winConditions[i][1]) {
-      playerWins = playerWins + 1;
+      currentPlayerSelection.wins = currentPlayerSelection.wins + 1;
       return `Player wins!`;
     } 
   }
-  computerWins = computerWins + 1;
+  currentComputerSelection.wins = currentComputerSelection.wins + 1;
   return `Computer wins!`;
 };
 
@@ -162,14 +159,17 @@ function displayWinnerMessage(winner) {
 };
 
 function updateScore() {
-  leftWins.innerText = 'Wins: ' + playerWins;
-  rightWins.innerText = 'Wins: ' + computerWins;
+  leftWins.innerText = 'Wins: ' + currentPlayerSelection.wins;
+  rightWins.innerText = 'Wins: ' + currentComputerSelection.wins;
 };
+
+fighter.removeEventListener('click', createPlayer);
 
 function showdown() {
   setTimeout(function() {
     hide([fighterClassic, fighterAdvanced], 'fighter--hidden');
     show([fighterShowdown, winnerMessage], 'fighter--hidden');
+    homeSubHeader.innerText = 'Fight!'
     fighterPlayer.innerText = currentPlayerSelection.icon;
     fighterComputer.innerText = currentComputerSelection.icon;
     displayWinnerMessage(createGame(currentPlayerSelection.name, currentComputerSelection.name));
@@ -181,6 +181,7 @@ function resetGame() {
   setTimeout(function() {
     show([fighterClassic], 'fighter--hidden');
     hide([fighterShowdown, winnerMessage], 'fighter--hidden');
+    homeSubHeader.innerText = 'Choose your fighter!'
     if (classicOrAdvanced === true) {
       show([fighterClassic], 'fighter--hidden');
       hide([fighterShowdown], 'fighter--hidden');
@@ -192,8 +193,9 @@ function resetGame() {
 };
 
 function displayWinner(event) {
-  currentPlayerSelection = createPlayer(event);
-  currentComputerSelection = createComputer();
+  createPlayer(event, currentPlayerSelection);
+  createComputer(currentComputerSelection);
+  console.log(currentPlayerSelection)
   showdown(currentPlayerSelection.name, currentComputerSelection.name);
   resetGame();
 };
